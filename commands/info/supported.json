@@ -172,7 +172,7 @@
     "supported": "Yes",
     "experience_level": "Intermediate",
     "recommended": "No",
-    "notes": "Fedora Spins are supported, but are low quality compared to Fedora itself"
+    "notes": null
   },
   {
     "name": "Feren OS",
@@ -183,7 +183,7 @@
   },
   {
     "name": "GalliumOS",
-    "supported": "Yes",
+    "supported": "No",
     "experience_level": "Intermediate",
     "recommended": "No",
     "notes": "GalliumOS is unmaintained, and is only meant for chromebooks."
@@ -283,7 +283,7 @@
     "name": "Mageia",
     "supported": "Yes",
     "experience_level": "Intermediate",
-    "recommended": "Yes",
+    "recommended": "No",
     "notes": null
   },
   {

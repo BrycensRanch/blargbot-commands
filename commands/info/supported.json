@@ -504,6 +504,13 @@
     "notes": null
   },
   {
+    "name": "Ubuntu Server LTS",
+    "supported": "Yes",
+    "experience_level": "Intermediate",
+    "recommended": "No",
+    "notes": "Suitable for server usage or as a minimal base to install a desktop on top of." 
+  },
+  {
     "name": "Ubuntu Studio LTS",
     "supported": "Yes",
     "experience_level": "Beginner",

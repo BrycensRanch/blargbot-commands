@@ -11,7 +11,7 @@
             "inline": false
         },
         {
-            "value": "• **Very** frequent package updates, so may not be great for people who are not computer savvy.\r\n• May run into bugs due to frequent Plasma package updates that may be poorly tested\r\n•May lag behind a recent Ubuntu LTS release as it takes months for the maintainers to move their work to the next LTS release.",
+            "value": "• **Very** frequent package updates, so may not be great for people who are not computer savvy.\r\n• May run into bugs due to frequent Plasma package updates that may be poorly tested\r\n•Mixes KDE Neon packages with normal ubuntu packages. This may result in bugs during upgrades or package installation.\r\n•May lag behind a recent Ubuntu LTS release as it takes months for the maintainers to move their work to the next LTS release.",
             "name": "<:glare:504911469943717909> Disadvantages of KDE neon",
             "inline": false
         },

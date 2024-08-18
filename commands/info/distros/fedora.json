@@ -19,7 +19,7 @@
     "description": "• Basically a much more up-to-date CentOS or RHEL.\r\n• RPM-based using dnf as it's package manager.\r\n- Relatively easy syntax\r\n- Slower at installing packages than most other package managers\r\n• GNOME is Fedora's default Desktop Environment unless you use a 'spin'. Spins may vary in quality & ease of use. Fedora's KDE Plasma Spin and Fedora XFCE are also great options. It is not very beneficial to run a spin that only uses X11 as Fedora prides itself on being a distribution that constantly pushes the envelope.\r\n• Ships with only open source and unencumbered software in the official repos, you'll need to enable third party repos for anything closed source or with restrictive licensing.\r\n• 6-month release cycle with a 12-month support window.\r\n- Major updates to your Desktop Environment and core packages are typically done every release.\r\n- Kernel and mesa versions are pushed frequently.\r\n• Not recommended for people new to Linux due to the release cycle and default partition setup.",
     "color": 2703730,
     "author": {
-        "url": "https://getfedora.org/",
+        "url": "https://fedoraproject.org/",
         "proxy_icon_url": "https://images-ext-1.discordapp.net/external/sj-ZUYHUANwrTDrq22STPWTJvO1dTSpznT5ZZX8Moak/https/raw.githubusercontent.com/simoniz0r/discord-rss-bot/master/Fedora-logo.svg.png",
         "name": "Fedora",
         "icon_url": "https://raw.githubusercontent.com/simoniz0r/discord-rss-bot/master/Fedora-logo.svg.png"

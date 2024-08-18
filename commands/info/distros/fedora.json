@@ -11,7 +11,7 @@
             "inline": false
         },
         {
-            "value": "• [RPM Fusion](https://rpmfusion.org/Configuration)\r\n- Where you'll likely find most of the applications and tools you need that aren't in the official repos.\r\n• [Negativo17](https://negativo17.org/repositories/)\r\n-  If you'd rather enable one repo per application instead of one huge one, this is the route you should go.\r\n• [Flathub](https://flathub.org/home)\r\n- Not technically a third party repo but Fedora does have Flatpak enabled by default, so if all of the proprietary applications are available, it's worth trying out.\r\n- Flatpaks are sandboxes and typically come with tight file permissions, so some functions may not work or may require you to manually override file perms.\r\n\r\n[Download Fedora](https://getfedora.org)",
+            "value": "• [RPM Fusion](https://rpmfusion.org/Configuration)\r\n- Where you'll likely find most of the applications and tools you need that aren't in the official repos.\r\n• [Terra](https://terra.fyralabs.com/)\r\n- Fedora's second best external repository focusing primarily on userspace applications.\r\n• [Flathub](https://flathub.org/home)\r\n- Not technically a third party repo but Fedora does have Flatpak enabled by default, so if all of the proprietary applications are available, it's worth trying out.\r\n- Flatpaks are sandboxes and typically come with tight file permissions, so some functions may not work or may require you to manually override file perms.\r\n\r\n[Download Fedora](https://getfedora.org)",
             "name": "**Recommended Third-Party Repos**",
             "inline": false
         }

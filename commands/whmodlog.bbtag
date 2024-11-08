@@ -81,23 +81,22 @@ description:{params;0};}}
 {jset;~mlj;count;{params;3};c}
 {fallback;}
 {if;{params;4};!=;{null};
-{jset;~mlj;message;{uriencode;{params;4}};c}}
+{jset;~mlj;message;{uriencode;{substring;{params;4};0;200}};c}}
 {fallback}
 
 {//;send webhook with modlog embed}
 {func.webhook_send;{get;_modlog.id};{embedbuild;
-image.url:https://x.com/{base64encode;{jget;~mlj}};
-author.name:{username;{params;0}}#{userdiscrim;{params;0}} ({userid;{params;0}});
+image.url:https://x.com/{uriencode;{jget;~mlj}};
+author.name:{username;{params;0}} ({userid;{params;0}});
 author.icon_url:{useravatar;{params;0}};
 footer.text:{usernick;{params;1}} ({userid;{params;1}});
 footer.icon_url:{useravatar;{params;1}};
 timestamp:{time};
-title:Case {jget;~mlj;case};
 color:{if;{warnings;{params;0}};<;3;{func.dlcolors;yellow};{func.dlcolors;orange}};
 description:**Type**: Warn
 **Reason**: {regexreplace;{regexreplace;{params;2};/'/g;‘};/"/g;”}
-**Warnings**: Given: {params;3} • Total: {warnings;{params;0}}{fallback;}{if;{params;4};!=;{null};{newline}**Message**: {regexreplace;{regexreplace;{params;4};/'/g;‘};/"/g;”}}{fallback}{if;{warnings;{params;0}};>;2;
-{newline}**Warning Limit Reached**: {if;{warnings;{params;0}};>;7;Muted for 1 hour and `users` role removed.;Muted for 15 minutes.}}
+**Warnings**: Given: {params;3} • Total: {warnings;{params;0}}{fallback;}{if;{params;4};!=;{null};{newline}**Message**: {substring;{regexreplace;{regexreplace;{params;4};/'/g;‘};/"/g;”};0;200}}{fallback}{if;{warnings;{params;0}};>;2;
+{newline}**Warning Limit Reached**: Timed out for {math;*;{warnings;{params;0}};10} minutes.}
 **[Link for context]({jget;~mlj;link})**;}}
 
 {//;output error if id not set}
@@ -107,13 +106,13 @@ description:**Type**: Warn
 
 {//;output modlog to current channel}
 {output;{embed;{embedbuild;
-author.name:{username;{params;0}}#{userdiscrim;{params;0}} ({userid;{params;0}});
+author.name:{username;{params;0}} ({userid;{params;0}});
 author.icon_url:{useravatar;{params;0}};
 color:{if;{warnings;{params;0}};<;3;{func.dlcolors;yellow};{func.dlcolors;orange}};
 description:**Type**: Warn
 **Reason**: {params;2}
 **Warnings**: Given: {params;3} • Total: {warnings;{params;0}}{if;{warnings;{params;0}};>;2;
-{newline}**Warning Limit Reached**: {if;{warnings;{params;0}};>;7;Muted for 1 hour and `users` role removed.;Muted for 15 minutes.}}
+{newline}**Warning Limit Reached**: Timed out for {math;*;{warnings;{params;0}};10} minutes.}
 <#{get;_modlog.chan}>;}}};
 
 ["edit"];
@@ -123,18 +122,17 @@ description:**Type**: Warn
 
 {//;setup embed}
 {set;!~mlembed;{embedbuild;
-image.url:https://x.com/{base64encode;{jget;~mlj}};
-author.name:{username;{jget;~mlj;user}}#{userdiscrim;{jget;~mlj;user}} ({userid;{jget;~mlj;user}});
+image.url:https://x.com/{uriencode;{jget;~mlj}};
+author.name:{username;{jget;~mlj;user}} ({userid;{jget;~mlj;user}});
 author.icon_url:{useravatar;{jget;~mlj;user}};
 footer.text:{usernick;{jget;~mlj;mod}} ({userid;{jget;~mlj;mod}});
 footer.icon_url:{useravatar;{jget;~mlj;mod}};
 timestamp:{time};
-title:Case {jget;~mlj;case};
 color:{if;{warnings;{jget;~mlj;user}};<;3;{func.dlcolors;yellow};{func.dlcolors;orange}};
 description:**Type**: Warn
 **Reason**: {uridecode;{regexreplace;{regexreplace;{jget;~mlj;reason};/’/g;`};/\//g;}}
 **Warnings**: Given: {jget;~mlj;count} • Total: {warnings;{jget;~mlj;user}}{fallback;}{if;{jget;~mlj;message};!=;{null};{newline}**Message**: {uridecode;{regexreplace;{regexreplace;{jget;~mlj;message};/’/g;`};/\//g;}}}{fallback}{if;{warnings;{jget;~mlj;user}};>;2;
-{newline}**Warning Limit Reached**: {if;{warnings;{jget;~mlj;user}};>;7;Muted for 1 hour and `users` role removed.;Muted for 15 minutes.}}
+{newline}**Warning Limit Reached**: Timed out for {math;*;{warnings;{jget;~mlj;user}};10} minutes.}
 **[Link for context]({jget;~mlj;link})**;}}
 
 {//;edit webhook with modlog embed}
@@ -186,13 +184,12 @@ description:**Type**: Warn
 
 {//;send webhook with modlog embed}
 {func.webhook_send;{get;_modlog.id};{embedbuild;
-image.url:https://x.com/{base64encode;{jget;~mlj}};
-author.name:{username;{params;0}}#{userdiscrim;{params;0}} ({userid;{params;0}});
+image.url:https://x.com/{uriencode;{jget;~mlj}};
+author.name:{username;{params;0}} ({userid;{params;0}});
 author.icon_url:{useravatar;{params;0}};
 footer.text:{usernick;{params;1}} ({userid;{params;1}});
 footer.icon_url:{useravatar;{params;1}};
 timestamp:{time};
-title:Case {jget;~mlj;case};
 color:{func.dlcolors;brightgreen};
 description:**Type**: Pardon
 **Reason**: {params;2}
@@ -206,7 +203,7 @@ description:**Type**: Pardon
 
 {//;output modlog to current channel}
 {output;{embed;{embedbuild;
-author.name:{username;{params;0}}#{userdiscrim;{params;0}} ({userid;{params;0}});
+author.name:{username;{params;0}} ({userid;{params;0}});
 author.icon_url:{useravatar;{params;0}};
 color:{func.dlcolors;brightgreen};
 description:**Type**: Pardon
@@ -221,13 +218,12 @@ description:**Type**: Pardon
 
 {//;setup embed}
 {set;!~mlembed;{embedbuild;
-image.url:https://x.com/{base64encode;{jget;~mlj}};
-author.name:{username;{jget;~mlj;user}}#{userdiscrim;{jget;~mlj;user}} ({userid;{jget;~mlj;user}});
+image.url:https://x.com/{uriencode;{jget;~mlj}};
+author.name:{username;{jget;~mlj;user}} ({userid;{jget;~mlj;user}});
 author.icon_url:{useravatar;{jget;~mlj;user}};
 footer.text:{usernick;{jget;~mlj;mod}} ({userid;{jget;~mlj;mod}});
 footer.icon_url:{useravatar;{jget;~mlj;mod}};
 timestamp:{time};
-title:Case {jget;~mlj;case};
 color:{func.dlcolors;brightgreen};
 description:**Type**: Pardon
 **Reason**: {uridecode;{regexreplace;{regexreplace;{jget;~mlj;reason};/’/g;`};/\//g;}}
@@ -279,19 +275,16 @@ description:**Type**: Pardon
 {jset;~mlj;mod;{params;2};c}
 }
 {jset;~mlj;reason;{uriencode;{params;3}};c}
-{fallback;permanent}
-{jset;~mlj;duration;{if;{params;4};==;{null};permanent;{params;4}};c}
-{fallback}
+{jset;~mlj;duration;{if;{params;4};contains;`;permanent;{params;4}};c}
 
 {//;send webhook with modlog embed}
 {func.webhook_send;{get;_modlog.id};{embedbuild;
-image.url:https://x.com/{base64encode;{jget;~mlj}};
-author.name:{username;{params;1}}#{userdiscrim;{params;1}} ({userid;{params;1}});
+image.url:https://x.com/{uriencode;{jget;~mlj}};
+author.name:{username;{params;1}} ({userid;{params;1}});
 author.icon_url:{useravatar;{params;1}};
 footer.text:{usernick;{params;2}} ({userid;{params;2}});
 footer.icon_url:{useravatar;{params;2}};
 timestamp:{time};
-title:Case {jget;~mlj;case};
 color:{switch;{params;0};["ban"];{func.dlcolors;red};{func.dlcolors;orange}};
 description:**Type**: {capitalize;{params;0}}
 **Reason**: {params;3}
@@ -308,7 +301,7 @@ description:**Type**: {capitalize;{params;0}}
 {//;do nothing};
 
 {output;{embed;{embedbuild;
-author.name:{username;{params;1}}#{userdiscrim;{params;1}} ({userid;{params;1}});
+author.name:{username;{params;1}} ({userid;{params;1}});
 author.icon_url:{useravatar;{params;1}};
 color:{switch;{params;0};["ban"];{func.dlcolors;red};{func.dlcolors;orange}};
 description:**Type**: {capitalize;{params;0}}
@@ -323,13 +316,12 @@ description:**Type**: {capitalize;{params;0}}
 
 {//;setup embed}
 {set;!~mlembed;{embedbuild;
-image.url:https://x.com/{base64encode;{jget;~mlj}};
-author.name:{username;{jget;~mlj;user}}#{userdiscrim;{jget;~mlj;user}} ({userid;{jget;~mlj;user}});
+image.url:https://x.com/{uriencode;{jget;~mlj}};
+author.name:{username;{jget;~mlj;user}} ({userid;{jget;~mlj;user}});
 author.icon_url:{useravatar;{jget;~mlj;user}};
 footer.text:{usernick;{jget;~mlj;mod}} ({userid;{jget;~mlj;mod}});
 footer.icon_url:{useravatar;{jget;~mlj;mod}};
 timestamp:{time};
-title:Case {jget;~mlj;case};
 color:{switch;{jget;~mlj;type};["ban"];{func.dlcolors;red};{func.dlcolors;orange}};
 description:**Type**: {capitalize;{jget;~mlj;type}}
 **Reason**: {uridecode;{regexreplace;{regexreplace;{jget;~mlj;reason};/’/g;`};/\//g;}}
@@ -384,13 +376,12 @@ description:**Type**: {capitalize;{jget;~mlj;type}}
 
 {//;send webhook with modlog embed}
 {func.webhook_send;{get;_modlog.id};{embedbuild;
-image.url:https://x.com/{base64encode;{jget;~mlj}};
-author.name:{username;{params;1}}#{userdiscrim;{params;1}} ({userid;{params;1}});
+image.url:https://x.com/{uriencode;{jget;~mlj}};
+author.name:{username;{params;1}} ({userid;{params;1}});
 author.icon_url:{useravatar;{params;1}};
 footer.text:{usernick;{params;2}} ({userid;{params;2}});
 footer.icon_url:{useravatar;{params;2}};
 timestamp:{time};
-title:Case {jget;~mlj;case};
 color:{switch;{params;0};["kick"];{func.dlcolors;brightred};["unban"];{func.dlcolors;brightblue};["unmute"];{func.dlcolors;green}};
 description:**Type**: {capitalize;{params;0}}
 **Reason**: {params;3}
@@ -403,7 +394,7 @@ description:**Type**: {capitalize;{params;0}}
 
 {//;output modlog to current channel}
 {output;{embed;{embedbuild;
-author.name:{username;{params;1}}#{userdiscrim;{params;1}} ({userid;{params;1}});
+author.name:{username;{params;1}} ({userid;{params;1}});
 author.icon_url:{useravatar;{params;1}};
 color:{switch;{params;0};["kick"];{func.dlcolors;brightred};["unban"];{func.dlcolors;brightblue};["unmute"];{func.dlcolors;green}};
 description:**Type**: {capitalize;{params;0}}
@@ -417,13 +408,12 @@ description:**Type**: {capitalize;{params;0}}
 
 {//;setup embed}
 {set;!~mlembed;{embedbuild;
-image.url:https://x.com/{base64encode;{jget;~mlj}};
-author.name:{username;{jget;~mlj;user}}#{userdiscrim;{jget;~mlj;user}} ({userid;{jget;~mlj;user}});
+image.url:https://x.com/{uriencode;{jget;~mlj}};
+author.name:{username;{jget;~mlj;user}} ({userid;{jget;~mlj;user}});
 author.icon_url:{useravatar;{jget;~mlj;user}};
 footer.text:{usernick;{jget;~mlj;mod}} ({userid;{jget;~mlj;mod}});
 footer.icon_url:{useravatar;{jget;~mlj;mod}};
 timestamp:{time};
-title:Case {jget;~mlj;case};
 color:{switch;{jget;~mlj;type};["kick"];{func.dlcolors;brightred};["unban"];{func.dlcolors;brightblue};["unmute"];{func.dlcolors;green}};
 description:**Type**: {capitalize;{jget;~mlj;type}}
 **Reason**: {uridecode;{regexreplace;{regexreplace;{jget;~mlj;reason};/’/g;`};/\//g;}}
@@ -462,7 +452,7 @@ This command is not meant to be interacted with directly.  To edit a reason for 
 title:Help for reason;
 color:{func.dlcolors;red};
 description:__**Usage**__: `reason <latest|case number> <new reason>`
-Update the reason for an existing modlog.  Use either `latest` for the most recent modlog or specify a case number for a different modlog.;}}
+Update the reason for an existing modlog.  Use either `latest` for the most recent modlog or specify a case number for a different modlog.  The case number is the message ID of the modlog.;}}
 }
 
 }
@@ -473,16 +463,17 @@ Update the reason for an existing modlog.  Use either `latest` for the most rece
 {switch;{commandname};
 ["modlog","whmodlog"];
 {func.modlog_help;modlog}
-{return;false}}
+{return;false}
+}
 
 {//;check if being ran through 'reason' command}
-{if;{args;0};==;reason;
+{if;{commandname};==;reason;
 
 {//;set webhook type to edit}
 {set;!~mlwhtype;edit}
 
 {fallback;}
-{switch;{args;1};
+{switch;{args;0};
 
 ["help",""];
 {//;output help}
@@ -493,33 +484,36 @@ Update the reason for an existing modlog.  Use either `latest` for the most rece
 {//;set message id}
 {set;!~mlid;{lastmessageid;{get;_modlog.chan}}}
 {//;get log json from modlog embed}
-{set;!~mlj;{base64decode;{replace;{jget;{messageembeds;{get;_modlog.chan};{lastmessageid;{get;_modlog.chan}}};0.image.url};https://x.com/;}}};
+{set;!~mlj;{uridecode;{replace;{jget;{messageembeds;{get;_modlog.chan};{lastmessageid;{get;_modlog.chan}}};0.image.url};https://x.com/;}}};
 
-{set;!~mlid;{args;2}}
-{set;!~mlj;{base64decode;{replace;{jget;{messageembeds;{get;_modlog.chan};{get;~mlid}};0.image.url};https://x.com/;}}}
+{set;!~mlid;{args;0}}
+{set;!~mlj;{uridecode;{replace;{jget;{messageembeds;{get;_modlog.chan};{get;~mlid}};0.image.url};https://x.com/;}}}
 }
 
 {if;{jget;~mlj;case};==;{null};
-{func.modlog_error;Error getting json from message ID '{args;2}'}
+{func.modlog_error;Error getting json from message ID '{args;0}'}
 {return}}
 
 {//;get type from json}
 {switch;{jget;~mlj;type};
 
 ["warn"];
-{func.modlog_warn;{args;2}};
+{func.modlog_warn;{args;1;n}};
 
 ["pardon"];
-{func.modlog_pardon;{args;2}};
+{func.modlog_pardon;{args;1;n}};
 
 ["mute","ban"];
-{func.modlog_mb;{jget;~mlj;type};{args;2}};
+{func.modlog_mb;{jget;~mlj;type};{args;1;n}};
 
 ["kick","unmute","unban"];
-{func.modlog_kumub;{jget;~mlj;type};{args;2}};
+{func.modlog_kumub;{jget;~mlj;type};{args;1;n}};
 
-{func.modlog_help;reason}}
-;
+{func.modlog_help;reason}
+}
+
+{return}
+}
 
 {//;get current case}
 {fallback;}
@@ -543,4 +537,4 @@ Update the reason for an existing modlog.  Use either `latest` for the most rece
 
 {func.modlog_help;modlog}
 
-}}
+}

@@ -35,7 +35,7 @@
 | Kali Linux | No | Advanced | No |  |
 | KDE Argon | Yes | Intermediate | No |  |
 | KDE Krypton | Partial | Advanced | No |  |
-| KDE neon | Yes | Intermediate | Yes |  |
+| KDE neon | Yes | Intermediate | No |  |
 | KISS | No | Advanced | No |  |
 | Kubuntu LTS | Yes | Beginner | Yes |  |
 | Linux Lite | No | N/A | No |  |
